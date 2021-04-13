@@ -32,8 +32,13 @@ spec:
   git:
     repo: https://github.com/janetkuo/csmr-examples.git
     branch: main
-    dir: "roota-multirepo-unstructured"
+    dir: "root-multirepo-unstructured"
+    # We recommend securing your source repository.
+    # Other supported auth: `ssh`, `cookiefile`, `token`, `gcenode`.
     auth: none
+    # Refer to a Secret you create to hold the private key, cookiefile, or token.
+    # secretRef:
+    #   name: SECRET_NAME
 ```
 
 Then, apply them to the cluster:
@@ -61,6 +66,8 @@ spec:
   git:
     syncRepo: https://github.com/janetkuo/csmr-examples
     syncBranch: main
+    # We recommend securing your source repository.
+    # Other supported secretType: `ssh`, `cookiefile`, `token`, `gcenode`.
     secretType: none
     policyDir: root-monorepo-unstructured
   sourceFormat: unstructured
