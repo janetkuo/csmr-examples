@@ -5,7 +5,7 @@
 For Config Sync multi-repo mode with unstructured format, use this [example](./root-multirepo-unstructured).
 The example contains `ClusterRole`, `CustomResourceDefinition`, policy constraints, and configurations for Prometheus Operator for monitoring.
 
-First, create 2 files with a `ConfigManagement` and a `RootSync` custom resource:
+First, create a files with a `ConfigManagement` custom resource:
 
 ```yaml
 # config-management.yaml
@@ -20,6 +20,15 @@ spec:
   policyController:
     enabled: true
 ```
+
+Wait for the `RootSync` and `RepoSync` CRDs to be available:
+
+```console
+until kubectl get customresourcedefinitions rootsyncs.configsync.gke.io reposyncs.configsync.gke.io; \
+do date; sleep 1; echo ""; done
+```
+
+Then create a files with a `RootSync` custom resource:
 
 ```yaml
 # root-sync.yaml
@@ -46,7 +55,7 @@ spec:
 
 Then, apply them to the cluster:
 
-```
+```console
 kubectl -f config-management.yaml
 kubectl -f root-sync.yaml
 ```
@@ -80,6 +89,6 @@ spec:
 
 Then, apply it to the cluster:
 
-```
+```console
 kubectl -f config-management.yaml
 ```

@@ -1,6 +1,6 @@
 # If you are using a Config Sync version earlier than 1.7,
 # use: apiVersion: configsync.gke.io/v1alpha1
-apiVersion: configsync.gke.io/v1beta1
+apiVersion: configsync.gke.io/v1alpha1
 kind: RepoSync
 metadata:
   # There can be at most one RepoSync object per namespace.
