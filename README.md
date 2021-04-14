@@ -1,8 +1,9 @@
-# csmr-examples
+# Config Sync Examples
 
 ## Multi-Repo mode, unstructured format
 
-For Config Sync multi-repo mode with unstructured format, use this [example](./root-multirepo-unstructured):
+For Config Sync multi-repo mode with unstructured format, use this [example](./root-multirepo-unstructured).
+The example contains `ClusterRole`, `CustomResourceDefinition`, policy constraints, and configurations for Prometheus Operator for monitoring.
 
 First, create 2 files with a `ConfigManagement` and a `RootSync` custom resource:
 
@@ -13,7 +14,9 @@ kind: ConfigManagement
 metadata:
   name: config-management
 spec:
+  # Enable multi-repo mode to use new features
   enableMultiRepo: true
+  # Enable policy controller to enforce constraints
   policyController:
     enabled: true
 ```
@@ -50,7 +53,8 @@ kubectl -f root-sync.yaml
 
 ## Mono-Repo mode, unstructured format
 
-For Config Sync mono-repo mode with unstructured format, use this [example](./root-monorepo-unstructured):
+For Config Sync mono-repo mode with unstructured format, use this [example](./root-monorepo-unstructured).
+The example contains `ClusterRole`, `CustomResourceDefinition`, policy constraints, and configurations for Prometheus Operator for monitoring.
 
 First, create a file with a `ConfigManagement` custom resource:
 
@@ -61,6 +65,7 @@ kind: ConfigManagement
 metadata:
   name: config-management
 spec:
+  # Enable policy controller to enforce constraints
   policyController:
     enabled: true
   git:
