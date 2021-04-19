@@ -2,5 +2,3 @@ apiVersion: v1
 kind: Namespace
 metadata:
   name: gamestore
-  labels:
-    geo: us-central # 'geo' is required by constraint-ns-must-have-geo.yaml

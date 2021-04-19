@@ -7,7 +7,7 @@ Install 1.7.0 release of [Anthos Config Management](https://cloud.google.com/ant
 ## Multi-Repo mode, unstructured format
 
 For [Config Sync multi-repo mode](https://cloud.google.com/kubernetes-engine/docs/add-on/config-sync/how-to/multi-repo) with unstructured format, use this [example](./root-multirepo-unstructured).
-The example contains `ClusterRole`, `CustomResourceDefinition`, policy constraints, configurations for Prometheus Operator for monitoring, `Rolebinding`, `Namespace`, and `RepoSync`.
+The example contains `ClusterRole`, `CustomResourceDefinition`, configurations for Prometheus Operator for monitoring, `Rolebinding`, `Namespace`, and `RepoSync`.
 
 First, create a files with a `ConfigManagement` custom resource:
 
@@ -20,9 +20,6 @@ metadata:
 spec:
   # Enable multi-repo mode to use new features
   enableMultiRepo: true
-  # Enable policy controller to enforce constraints
-  policyController:
-    enabled: true
 ```
 
 Wait for the `RootSync` and `RepoSync` CRDs to be available:
@@ -108,7 +105,7 @@ Note that you need to update [`RepoSync` resource](root/reposync-gamestore.yaml)
 ## Mono-Repo mode, unstructured format
 
 For Config Sync mono-repo mode with unstructured format, use this [example](./root-monorepo-unstructured).
-The example contains `ClusterRole`, `CustomResourceDefinition`, policy constraints, and configurations for Prometheus Operator for monitoring.
+The example contains `ClusterRole`, `CustomResourceDefinition`, and configurations for Prometheus Operator for monitoring.
 
 First, create a file with a `ConfigManagement` custom resource:
 
@@ -119,9 +116,6 @@ kind: ConfigManagement
 metadata:
   name: config-management
 spec:
-  # Enable policy controller to enforce constraints
-  policyController:
-    enabled: true
   git:
     # If you fork this repo, change the url to point to your fork
     syncRepo: https://github.com/janetkuo/csmr-examples
