@@ -132,3 +132,14 @@ Then, apply it to the cluster:
 ```console
 kubectl -f config-management.yaml
 ```
+
+### Root configs
+
+To verify resources in the "root-monorepo-unstructured" directory has been synced to the cluster:
+
+```console
+# Look at sync status for latest synced token (git commit SHA)
+kubectl describe repos.configmanagement.gke.io repo
+nomos status
+kubectl get <resources specified in the "root-monorepo-unstructured" directory>
+```
