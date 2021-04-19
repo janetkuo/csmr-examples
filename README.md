@@ -64,18 +64,18 @@ kubectl -f root-sync.yaml
 
 ### Root configs
 
-To verify resources in the "root" directory has been synced to the cluster:
+To verify resources in the "root-multirepo-unstructured" directory has been synced to the cluster:
 
 ```console
 kubectl get -f root-sync.yaml -w
 kubectl describe -f root-sync.yaml
 kubectl get resourcegroups -n config-management-system
-kubectl get <resources specified in the "root" directory>
+kubectl get <resources specified in the "root-multirepo-unstructured" directory>
 ```
 
 ### Namespace configs
 
-The configs in the "root" directory contains a `gamestore` namespace and a [`RepoSync` resource](root/reposync-gamestore.yaml) in the `gamestore` namespacing, referencing the "gamestore" directory in this git repository.
+The configs in the "root-multirepo-unstructured" directory contains a `gamestore` namespace and a [`RepoSync` resource](root-multirepo-unstructured/reposync-gamestore.yaml) in the `gamestore` namespacing, referencing the "gamestore" directory in this git repository.
 
 To verify resources in the "gamestore" directory has been synced to the cluster:
 
