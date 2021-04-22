@@ -44,7 +44,7 @@ metadata:
   labels:
     prometheus: acm
 spec:
-  replicas: 3
+  replicas: 4
   serviceAccountName: prometheus-acm
   serviceMonitorSelector:
     matchLabels:
