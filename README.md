@@ -22,6 +22,12 @@ spec:
   enableMultiRepo: true
 ```
 
+Apply it to the cluster:
+
+```console
+kubectl -f config-management.yaml
+```
+
 Wait for the `RootSync` and `RepoSync` CRDs to be available:
 
 ```console
@@ -55,10 +61,9 @@ spec:
     #   name: SECRET_NAME
 ```
 
-Then, apply them to the cluster:
+Then, apply it to the cluster:
 
 ```console
-kubectl -f config-management.yaml
 kubectl -f root-sync.yaml
 ```
 
