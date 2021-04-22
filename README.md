@@ -72,8 +72,10 @@ kubectl apply -f root-sync.yaml
 To verify resources in the "root-multirepo-unstructured" directory has been synced to the cluster:
 
 ```console
-nomos status
+# Wait until source commit matches sync commit
 kubectl get -f root-sync.yaml -w
+# Check Config Sync status
+nomos status
 kubectl describe -f root-sync.yaml
 kubectl get resourcegroups -n config-management-system
 kubectl get <resources specified in the "root-multirepo-unstructured" directory>
@@ -86,8 +88,10 @@ The configs in the "root-multirepo-unstructured" directory contains a `gamestore
 To verify resources in the "gamestore" directory has been synced to the cluster:
 
 ```console
-nomos status
+# Wait until source commit matches sync commit
 kubectl get reposync.configsync.gke.io/repo-sync -n gamestore -w
+# Check Config Sync status
+nomos status
 kubectl describe reposync.configsync.gke.io/repo-sync -n gamestore
 kubectl get resourcegroups -n gamestore
 kubectl get <resources specified in the "gamestore" directory>
@@ -145,6 +149,7 @@ kubectl apply -f config-management.yaml
 To verify resources in the "root-monorepo-unstructured" directory has been synced to the cluster:
 
 ```console
+# Check Config Sync status
 nomos status
 kubectl get <resources specified in the "root-monorepo-unstructured" directory>
 ```
