@@ -25,7 +25,7 @@ spec:
 Apply it to the cluster:
 
 ```console
-kubectl -f config-management.yaml
+kubectl apply -f config-management.yaml
 ```
 
 Wait for the `RootSync` and `RepoSync` CRDs to be available:
@@ -64,7 +64,7 @@ spec:
 Then, apply it to the cluster:
 
 ```console
-kubectl -f root-sync.yaml
+kubectl apply -f root-sync.yaml
 ```
 
 ### Root configs
@@ -137,7 +137,7 @@ spec:
 Then, apply it to the cluster:
 
 ```console
-kubectl -f config-management.yaml
+kubectl apply -f config-management.yaml
 ```
 
 ### Root configs
