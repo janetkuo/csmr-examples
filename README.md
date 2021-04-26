@@ -6,7 +6,7 @@ Either install 1.7.0 release of [Anthos Config Management](https://cloud.google.
 
 ## Multi-Repo mode, unstructured format
 
-For [Config Sync multi-repo mode](https://cloud.google.com/kubernetes-engine/docs/add-on/config-sync/how-to/multi-repo) with unstructured format, use this [example](./root-multirepo-unstructured).
+For [Config Sync multi-repo mode](https://cloud.google.com/kubernetes-engine/docs/add-on/config-sync/how-to/multi-repo) with unstructured format, use this [example](./multirepo/).
 The example contains `ClusterRole`, `CustomResourceDefinition`, configurations for Prometheus Operator for monitoring, `Rolebinding`, `Namespace`, and `RepoSync`.
 
 First, create a files with a `ConfigManagement` custom resource:
@@ -52,7 +52,7 @@ spec:
     # If you fork this repo, change the url to point to your fork
     repo: https://github.com/janetkuo/csmr-examples.git
     branch: main
-    dir: "root-multirepo-unstructured"
+    dir: "multirepo/root"
     # We recommend securing your source repository.
     # Other supported auth: `ssh`, `cookiefile`, `token`, `gcenode`.
     auth: none
@@ -69,7 +69,7 @@ kubectl apply -f root-sync.yaml
 
 ### Root configs
 
-To verify resources in the "root-multirepo-unstructured" directory has been synced to the cluster:
+To verify resources in the "multirepo/root" directory has been synced to the cluster:
 
 ```console
 # Wait until source commit matches sync commit
@@ -78,12 +78,12 @@ kubectl get -f root-sync.yaml -w
 nomos status
 kubectl describe -f root-sync.yaml
 kubectl get resourcegroups -n config-management-system
-kubectl get <resources specified in the "root-multirepo-unstructured" directory>
+kubectl get <resources specified in the "multirepo/root" directory>
 ```
 
 ### Namespace configs
 
-The configs in the "root-multirepo-unstructured" directory contains a `gamestore` namespace and a [`RepoSync` resource](root-multirepo-unstructured/reposync-gamestore.yaml) in the `gamestore` namespace, referencing the "gamestore" directory in this git repository.
+The configs in the "multirepo/root" directory contains a `gamestore` namespace and a [`RepoSync` resource](multirepo/root/reposync-gamestore.yaml) in the `gamestore` namespace, referencing the "gamestore" directory in this git repository.
 
 To verify resources in the "gamestore" directory has been synced to the cluster:
 
@@ -115,7 +115,7 @@ Note that you need to update [`RepoSync` resource](root/reposync-gamestore.yaml)
 
 ## Mono-Repo mode, unstructured format
 
-For Config Sync mono-repo mode with unstructured format, use this [example](./root-monorepo-unstructured).
+For Config Sync mono-repo mode with unstructured format, use this [example](./monorepo/root).
 The example contains `ClusterRole`, `CustomResourceDefinition`, and configurations for Prometheus Operator for monitoring.
 
 First, create a file with a `ConfigManagement` custom resource:
@@ -134,7 +134,7 @@ spec:
     # We recommend securing your source repository.
     # Other supported secretType: `ssh`, `cookiefile`, `token`, `gcenode`.
     secretType: none
-    policyDir: root-monorepo-unstructured
+    policyDir: monorepo/root
   sourceFormat: unstructured
 ```
 
@@ -146,10 +146,10 @@ kubectl apply -f config-management.yaml
 
 ### Root configs
 
-To verify resources in the "root-monorepo-unstructured" directory has been synced to the cluster:
+To verify resources in the "monorepo/root" directory has been synced to the cluster:
 
 ```console
 # Check Config Sync status
 nomos status
-kubectl get <resources specified in the "root-monorepo-unstructured" directory>
+kubectl get <resources specified in the "monorepo/root" directory>
 ```

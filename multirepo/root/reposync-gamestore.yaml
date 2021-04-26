@@ -11,7 +11,7 @@ spec:
   git:
     repo: https://github.com/janetkuo/csmr-examples.git
     branch: main
-    dir: gamestore
+    dir: multirepo/namespaces/gamestore
     # We recommend securing your source repository.
     # Other supported auth: `ssh`, `cookiefile`, `token`, `gcenode`.
     auth: none
