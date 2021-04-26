@@ -6,7 +6,7 @@ Either install 1.7.0 release of [Anthos Config Management](https://cloud.google.
 
 ## Multi-Repo mode, unstructured format
 
-For [Config Sync multi-repo mode](https://cloud.google.com/kubernetes-engine/docs/add-on/config-sync/how-to/multi-repo) with unstructured format, use this [example](./multirepo/).
+For [Config Sync multi-repo mode](https://cloud.google.com/kubernetes-engine/docs/add-on/config-sync/how-to/multi-repo) with unstructured format, use this [example](multirepo/).
 The example contains `ClusterRole`, `CustomResourceDefinition`, configurations for Prometheus Operator for monitoring, `Rolebinding`, `Namespace`, and `RepoSync`.
 
 First, create a files with a `ConfigManagement` custom resource:
@@ -99,7 +99,7 @@ kubectl get <resources specified in the "gamestore" directory>
 
 ### Conflict changes
 
-Try to change the value of [configmap/store-inventory](gamestore/configmap-inventory.yaml) annotation `marketplace.com/comments` in the cluster:
+Try to change the value of [configmap/store-inventory](multirepo/namespaces/gamestore/configmap-inventory.yaml) annotation `marketplace.com/comments` in the cluster:
 
 ```console
 kubectl edit configmaps store-inventory -n gamestore
@@ -111,11 +111,11 @@ The request should be rejected by the admission webhook.
 
 Try to change the same annotation in your git repository, the change can be synced to the cluster.
 
-Note that you need to update [`RepoSync` resource](root/reposync-gamestore.yaml) in your git repository to point to your own fork if you want to make changes in git.
+Note that you need to update [`RepoSync` resource](multirepo/root/reposync-gamestore.yaml) in your git repository to point to your own fork if you want to make changes in git.
 
 ## Mono-Repo mode, unstructured format
 
-For Config Sync mono-repo mode with unstructured format, use this [example](./monorepo/root).
+For Config Sync mono-repo mode with unstructured format, use this [example](monorepo/root).
 The example contains `ClusterRole`, `CustomResourceDefinition`, and configurations for Prometheus Operator for monitoring.
 
 First, create a file with a `ConfigManagement` custom resource:
