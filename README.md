@@ -51,6 +51,7 @@ spec:
   git:
     # If you fork this repo, change the url to point to your fork
     repo: https://github.com/janetkuo/csmr-examples.git
+    # If you move the configs to a different branch, update the branch here
     branch: main
     dir: "multirepo/root"
     # We recommend securing your source repository.
@@ -84,6 +85,8 @@ kubectl get <resources specified in the "multirepo/root" directory>
 ### Namespace configs
 
 The configs in the "multirepo/root" directory contains a `gamestore` namespace and a [`RepoSync` resource](multirepo/root/reposync-gamestore.yaml) in the `gamestore` namespace, referencing the "gamestore" directory in this git repository.
+
+If you fork this example, you need to update the [`RepoSync` resource](multirepo/root/reposync-gamestore.yaml) to reference the right repository URL and git branch.
 
 To verify resources in the "gamestore" directory has been synced to the cluster:
 
@@ -130,6 +133,7 @@ spec:
   git:
     # If you fork this repo, change the url to point to your fork
     syncRepo: https://github.com/janetkuo/csmr-examples
+    # If you move the configs to a different branch, update the branch here
     syncBranch: main
     # We recommend securing your source repository.
     # Other supported secretType: `ssh`, `cookiefile`, `token`, `gcenode`.
