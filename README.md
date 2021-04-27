@@ -1,4 +1,4 @@
-# Config Sync Examples - Unstructured
+# Config Sync Examples
 
 ## Prerequisite 
 
