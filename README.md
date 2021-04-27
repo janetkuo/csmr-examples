@@ -4,7 +4,7 @@
 
 Either install 1.7.0 release of [Anthos Config Management](https://cloud.google.com/anthos-config-management/docs/how-to/installing) and [Config Sync Operator](https://cloud.google.com/anthos-config-management/docs/how-to/installing-config-sync), or install [standalone Config Sync Operator](https://cloud.google.com/kubernetes-engine/docs/add-on/config-sync/how-to/installing).
 
-## Multi-Repo mode, unstructured format
+## Multi-Repo mode
 
 For [Config Sync multi-repo mode](https://cloud.google.com/kubernetes-engine/docs/add-on/config-sync/how-to/multi-repo) with unstructured format, use this [example](multirepo/).
 The example contains `ClusterRole`, `CustomResourceDefinition`, configurations for Prometheus Operator for monitoring, `Rolebinding`, `Namespace`, and `RepoSync`.
@@ -113,7 +113,7 @@ Try to change the same annotation in your git repository, the change can be sync
 
 Note that you need to update [`RepoSync` resource](multirepo/root/reposync-gamestore.yaml) in your git repository to point to your own fork if you want to make changes in git.
 
-## Mono-Repo mode, unstructured format
+## Mono-Repo mode
 
 For Config Sync mono-repo mode with unstructured format, use this [example](monorepo/root).
 The example contains `ClusterRole`, `CustomResourceDefinition`, and configurations for Prometheus Operator for monitoring.
