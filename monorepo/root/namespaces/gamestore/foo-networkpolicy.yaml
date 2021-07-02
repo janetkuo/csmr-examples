@@ -10,9 +10,6 @@ spec:
       podSelector:
         matchLabels:
           k8s-app: kube-dns
-    - namespaceSelector:
-        matchLabels:
-          networking/namespace: istio-system
   - ports:
     - port: 3307
       protocol: TCP
