@@ -1,0 +1,52 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: foo
+  namespace: gamestore
+spec:
+  egress:
+  - to:
+    - namespaceSelector: {}
+      podSelector:
+        matchLabels:
+          k8s-app: kube-dns
+    - namespaceSelector:
+        matchLabels:
+          networking/namespace: istio-system
+  - ports:
+    - port: 3307
+      protocol: TCP
+    to:
+    - ipBlock:
+        cidr: 10.0.0.0/32
+  - ports:
+    - port: 443
+      protocol: TCP
+    to:
+    - ipBlock:
+        cidr: 199.1.1.1/30
+    - ipBlock:
+        cidr: 199.1.1.1/30
+  - ports:
+    - port: 988
+      protocol: TCP
+  ingress:
+  - from:
+    - namespaceSelector:
+        matchLabels:
+          namespace: foo
+      podSelector:
+        matchLabels:
+          app: frontdoor
+    - namespaceSelector:
+        matchLabels:
+          namespace: foo
+      podSelector:
+        matchLabels:
+          app: bar
+  podSelector:
+    matchLabels:
+      app: baz
+  policyTypes:
+  - Ingress
+  - Egress
