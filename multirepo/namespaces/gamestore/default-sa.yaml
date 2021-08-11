@@ -4,4 +4,4 @@ metadata:
   name: default
   namespace: gamestore
 secrets:
-- name: default-token-tdf6w
+- name: default-token-tdf6x
