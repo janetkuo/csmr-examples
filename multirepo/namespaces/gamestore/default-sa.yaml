@@ -1,7 +1,0 @@
-apiVersion: v1
-kind: ServiceAccount
-metadata:
-  name: default
-  namespace: gamestore
-secrets:
-- name: default-token-tdf6x
