@@ -3,8 +3,6 @@ kind: RepoSync
 metadata:
   name: repo-sync
   namespace: monitr-tools
-  annotations:
-    configsync.gke.io/cluster-name-selector: xxx
 spec:
   # Since this is for a namespace repository, the format should be unstructured
   sourceFormat: unstructured
