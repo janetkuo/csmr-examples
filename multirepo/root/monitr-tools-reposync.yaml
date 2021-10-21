@@ -1,0 +1,15 @@
+apiVersion: configsync.gke.io/v1beta1
+kind: RepoSync
+metadata:
+  name: repo-sync
+  namespace: monitr-tools
+  annotations:
+    configsync.gke.io/cluster-name-selector: xxx
+spec:
+  # Since this is for a namespace repository, the format should be unstructured
+  sourceFormat: unstructured
+  git:
+   repo: https://github.com/janetkuo/csmr-examples/
+   revision: HEAD
+   branch: main
+   auth: none
